@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<project name="warcutils" default="jar" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	<echo>Running build for warcutils:</echo>
+	<echo>Setting up build properties...</echo>
+
+	<!-- Set up build properties -->
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="jarFile" value="${basedir}/warcutils.jar" />
+	<property name="bin.dir" value="${basedir}/bin" />
+
+	<!-- Create jar from compiled sources  -->
+	<target name="jar">
+		<echo>Creating jar...</echo>
+		<jar destfile="${jarFile}" compress="true">
+			<fileset dir="${bin.dir}" includes="**/*.*" />
+		</jar>
+	</target>
+
+	<!-- Clean build and lib directories -->
+	<target name="clean">
+		<echo>Cleaning build directories...</echo>
+		<delete file="${jarFile}" />
+		<delete includeemptydirs="true">
+			<fileset dir="${lib.dir}" includes="**/*" />
+		</delete>
+	</target>
+
+	<!-- Retrieve dependcencies to lib directory -->
+	<target name="retrieve" depends="clean">
+		<ivy:retrieve pattern="lib/[artifact]-[type]-[revision].[ext]" type="jar" />
+	</target>
+</project>

@@ -1,0 +1,16 @@
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="SURFsara"
+        module="warcutils"
+        status="release">
+	</info>
+	<dependencies>
+	   <dependency org="org.apache.hadoop" name="hadoop-mapreduce-client-common" rev="2.4.0.2.1.1.0-385"/>
+	   <dependency org="org.apache.pig" name="pig" rev="0.12.1.2.1.1.0-385"/>
+	   <dependency org="org.apache.commons" name="commons-io" rev="1.3.2"/>
+	   <dependency org="org.jwat" name="jwat-common" rev="1.0.0"/>
+	   <dependency org="org.jwat" name="jwat-warc" rev="1.0.0"/>
+	   <dependency org="org.jwat" name="jwat-gzip" rev="1.0.0"/>
+    </dependencies>
+</ivy-module>
