@@ -11,7 +11,7 @@
   <groupId>SURFsara</groupId>
   <artifactId>warcutils</artifactId>
   <packaging>jar</packaging>
-  <version>working@mathijs.local</version>
+  <version>1.0</version>
   
   <repositories>
   	<repository>
