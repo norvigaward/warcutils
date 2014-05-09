@@ -25,8 +25,14 @@
 		</delete>
 	</target>
 
-	<!-- Retrieve dependcencies to lib directory -->
+	<!-- Retrieve dependencies to lib directory -->
 	<target name="retrieve" depends="clean">
 		<ivy:retrieve pattern="lib/[artifact]-[type]-[revision].[ext]" type="jar" />
 	</target>
+
+	<!-- Derive basic pom file.xml for maven -->
+	<target name="pom">
+		<ivy:makepom ivyfile="${basedir}/ivy.xml" pomfile="${basedir}/pom.xml" />
+	</target>
+
 </project>
