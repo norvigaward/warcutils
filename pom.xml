@@ -12,6 +12,15 @@
   <artifactId>warcutils</artifactId>
   <packaging>jar</packaging>
   <version>working@mathijs.local</version>
+  
+  <repositories>
+  	<repository>
+  		<id>HortonWorks</id>
+  		<url>http://repo.hortonworks.com/content/repositories/releases/</url>
+  		<releases></releases>
+  	</repository>
+  </repositories>
+  
   <dependencies>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
