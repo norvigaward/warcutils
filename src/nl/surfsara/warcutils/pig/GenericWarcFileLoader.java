@@ -59,13 +59,15 @@ public abstract class GenericWarcFileLoader extends LoadFunc {
 					 * The Content-Type field is often of the form 'text/html; encoding="utf-8"; filename="...";'.
 					 * We are only interested in the first part, so we strip and normalize the type field.
 					 */
-					Scanner splitter = new Scanner(httpheader.contentType);
-					splitter.useDelimiter(";");
-					if(splitter.hasNext()) {
-						type = splitter.next();
-					} 
+					if (httpheader.contentType != null) {
+						Scanner splitter = new Scanner(httpheader.contentType);
+						splitter.useDelimiter(";");
+						if(splitter.hasNext()) {
+							type = splitter.next().toLowerCase();
+						}
+					}
 				}
-				
+
 				/*
 				 * You can expand this loader by returning values from
 				 * the warcRecord as needed.  
@@ -74,7 +76,7 @@ public abstract class GenericWarcFileLoader extends LoadFunc {
 				t.set(0, url);
 				t.set(1, length);
 				t.set(2, type);
-				
+
 				return t;
 			} else {
 				return null;
