@@ -96,6 +96,7 @@ public class WarcRecordReader extends RecordReader<LongWritable, WarcRecord> {
 		if (key == null) {
 			key = new LongWritable();
 		}
+		pos = filePosition.getPos();
 		key.set(pos);
 
 		value = warcReader.getNextRecord();
