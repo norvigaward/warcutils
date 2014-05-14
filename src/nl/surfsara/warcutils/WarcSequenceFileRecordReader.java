@@ -38,7 +38,7 @@ import org.jwat.warc.WarcRecord;
  * sequencefiles. The sequencefiles are expected to be in the format
  * <LongWritable, Text>. Where each text value parses as one WarcRecord from the
  * Java Web Archive Toolkit. Used by the WarcSequenceFileInputFormat.
- *
+ * 
  * @author mathijs.kattenberg@surfsara.nl
  */
 public class WarcSequenceFileRecordReader extends RecordReader<LongWritable, WarcRecord> {
@@ -101,7 +101,9 @@ public class WarcSequenceFileRecordReader extends RecordReader<LongWritable, War
 
 	@Override
 	public void close() throws IOException {
-		in.close();
+		if (in != null) {
+			in.close();
+		}
 	}
 
 	@Override
