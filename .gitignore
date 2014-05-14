@@ -14,3 +14,7 @@ hs_err_pid*
 # Generated files
 bin/
 gen/
+/target
+/.settings/**
+/.project
+/.classpath
