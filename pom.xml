@@ -14,11 +14,24 @@
     <hadoop.version>2.4.0.2.1.1.0-385</hadoop.version>
   </properties>
 
+  <distributionManagement>
+    <repository>
+      <id>SURFsara.releases</id>
+      <name>SURFsara's releases</name>
+      <url>dav:https://beehub.nl/surfsara-repo/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>SURFsara.snapshots</id>
+      <name>SURFsara's snapshots</name>
+      <url>dav:https://beehub.nl/surfsara-repo/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <repositories>
     <repository>
       <id>HortonWorks</id>
       <url>http://repo.hortonworks.com/content/repositories/releases/</url>
-      <!-- <releases></releases> -->
+      <releases></releases>
     </repository>
   </repositories>
 
@@ -77,7 +90,48 @@
         </excludes>
       </resource>
     </resources>
+
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav-jackrabbit</artifactId>
+        <version>2.2</version>
+      </extension>
+    </extensions>
+    
     <plugins>
+      <!-- Package source to JAR to upload to repo -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
+        <executions>
+          <execution>
+            <!-- Restrict execution of source compilation to install or deploy. -->
+            <!-- The default is package. -->
+            <phase>install</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Package JavaDocs to JAR to upload to repo -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <!-- Restrict execution of source compilation to install -->
+            <phase>install</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
