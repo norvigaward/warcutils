@@ -65,6 +65,7 @@ public abstract class GenericWarcFileLoader extends LoadFunc {
 						if(splitter.hasNext()) {
 							type = splitter.next().toLowerCase();
 						}
+						splitter.close();
 					}
 				}
 
